@@ -1,0 +1,116 @@
+﻿@using Shared;
+
+@{
+    ViewData["Title"] = "New Invoice";
+
+    int? Qty = null;
+    decimal? price =  null;    
+    List<InvoiceDetailModel> detail = new List<InvoiceDetailModel>();
+}
+
+@model  Tuple<InvoiceModel, DetailModel, List<InvoiceDetailModel>> 
+
+<body>
+
+
+    <br />
+
+    <div class="myDiv"> <h3>Crear Factura</h3></div>
+    <br />
+    <form asp-action="addDetail" asp-asp-controller="Customer" method="post">
+    <div class="form-group col-md-12 flex-md-wrap">
+        
+
+        <label>Ciente</label>
+        <select for="Id" asp-items="@(new SelectList(ViewBag.Customer, "Id","Name"))"
+                name="CustomerId" asp-for="Item1.CustomerId">
+                <option value="null">Seleccione</option>
+
+        </select>
+            <span asp-validation-for="Item1.CustomerId" style=" color:red;"></span>
+
+
+        <label>Total Itbis</label>
+
+        <input asp-for="Item1.TotalItbis" readonly />
+
+
+        <label>Sub Total</label>
+
+        <input asp-for="Item1.SubTotal" readonly />
+
+
+        <label>Total</label>
+        <input asp-for="Item1.Total" readonly />
+
+
+
+    </div>
+    <br />
+    <div class="myDiv"> <h6>Detalle</h6></div>
+    
+        <label>Cantidad</label>
+        <input asp-for="@Qty" type="number" />
+        <span asp-validation-for="@Qty" style="color:red;"></span>
+        <label>Precio</label>
+        <input asp-for="@price" type="number" />
+        <span asp-validation-for="@price" style="color:red;"></span>
+
+        <button type="submit" onsubmit="">Agregar</button>
+    </form>
+
+    <br />
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Cantidad
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    Itbis
+                </th>
+                <th>
+                    Sub Total
+                </th>
+                <th>
+                    Total
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var e in detail)
+            {
+                <tr>
+                    <td>@e.Qty</td>
+                    <td>@Math.Round(e.Price,2)</td>
+                    <td>@Math.Round(e.TotalItbis.Value,2)</td>
+                    <td>@Math.Round(e.SubTotal.Value,2)</td>
+                    <td>@Math.Round(e.Total.Value, 2)</td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+   
+
+
+</body>
+
+
+
+
+
+<style>
+    .myDiv {
+        border: 2px outset black;
+        background-color: darkblue;
+        color: white;
+        text-align: center;
+    }
+</style>

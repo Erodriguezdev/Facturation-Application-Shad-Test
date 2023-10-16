@@ -1,0 +1,51 @@
+﻿@using Shared;
+
+
+@{
+    ViewData["Title"] = "Types Customers";
+    List<TypeCustomerModel> customertype = (List<TypeCustomerModel>)ViewData["TypeCustomer"];
+ }
+
+
+<body>
+
+    <div>   <p style="text-align:right; ">  <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="AddCustomerType">Agregar</a></p></div>
+    
+    <br />
+ <div  class="myDiv"> <h3>Tipo de Cliente</h3></div>
+ <table class="table table-striped table-bordered">
+ <thead>
+     <tr><th>
+         Id
+     </th> <th>
+         Descripcion
+     </th></tr>
+        </thead>
+        
+        <tbody>
+            @foreach(var e in customertype)
+            {
+                <tr>
+                    <td>@e.Id</td>
+                    <td>@e.Description</td>
+                    <td width="100px">
+
+                        <a asp-action="ModifyCustomerType" asp-controller="Customer" asp-route-itemid="@e.Id">Editar</a>
+                    </td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+    
+</body>
+
+<style>
+    .myDiv {
+        border: 2px outset black;
+        background-color: darkblue;
+        color: white;
+        text-align: center;
+    }
+</style>

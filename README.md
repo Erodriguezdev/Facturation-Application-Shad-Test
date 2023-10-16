@@ -1,11 +1,25 @@
 # Facturation-Application-Shad-Test
 
-##Requisitos
-##Netcore 7
-##EntityFramework core 7
-##Sql Server
+Esta es una aplicación de facturación desarrollada en .NET Core 7 que utiliza Entity Framework Core 7 para la gestión de datos y Microsoft SQL Server como base de datos.
 
+## Requisitos
 
+Para utilizar esta aplicación, asegúrate de tener instalados los siguientes requisitos:
+
+- .NET Core 7: Descarga e instala .NET Core 7 desde [dotnet.microsoft.com](https://dotnet.microsoft.com/download/dotnet/7.0).
+
+- Entity Framework Core 7: La aplicación utiliza Entity Framework Core 7 como ORM para la gestión de datos. Puedes instalarlo a través de NuGet.
+
+- Microsoft SQL Server: Debes tener una instancia de Microsoft SQL Server en funcionamiento. Asegúrate de que la cadena de conexión de la base de datos en la aplicación esté configurada correctamente.
+
+## Configuración
+
+Antes de ejecutar la aplicación, asegúrate de configurar la cadena de conexión de la base de datos en el archivo `appsettings.json`. Aquí tienes un ejemplo de cómo se vería la sección de configuración de la base de datos:
+
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=tu_servidor_sql;Database=nombre_de_la_base_de_datos;User Id=usuario;Password=contraseña;"
+}
 
 Diagrama base de datos
 

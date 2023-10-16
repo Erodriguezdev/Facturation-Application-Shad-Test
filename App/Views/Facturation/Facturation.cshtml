@@ -1,0 +1,73 @@
+﻿@using Shared;
+
+@{
+    ViewData["Title"] = "Facturation";
+    List<InvoiceModel> Invoice = (List<InvoiceModel>)ViewData["Invoice"];
+}
+
+<body>
+
+    <div>   <p style="text-align:right; ">  <a class="nav-link text-dark" asp-area="" asp-controller="Facturation" asp-action="AddInvoice">Nueva Factura</a></p></div>
+   
+
+    <br />
+    <div class="myDiv"> <h3>Facturas</h3></div>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    No. Factura
+                </th>
+                <th>
+                    Cliente
+                </th>
+                <th>
+                    Sub Total
+                </th>
+                <th>
+                    Total Itbis
+                </th>
+                <th>
+                    Total
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var e in Invoice)
+            {
+                <tr>
+                    <td>@e.Id</td>
+                    <td>@e.CustomerName</td>
+                    <td>@Math.Round(e.TotalItbis.Value,2)</td>
+                    <td>@Math.Round(e.SubTotal.Value,2)</td>
+                    <td>@Math.Round(@e.Total.Value, 2)</td>
+                    
+                    <td width="100px">
+
+                        <a asp-action="PreviewInvoice" asp-controller="Facturation" asp-route-itemid="@e.Id">Ver</a>
+                 
+
+                        <a asp-action="Modify" asp-controller="Facturation" asp-route-itemid="@e.Id">Modificar</a>
+                    
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+
+
+</body>
+
+<style>
+    .myDiv {
+        border: 2px outset black;
+        background-color: darkblue;
+        color: white;
+        text-align: center;
+    }
+</style>

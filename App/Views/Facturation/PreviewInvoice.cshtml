@@ -1,0 +1,98 @@
+﻿@using Shared;
+
+@{
+    ViewData["Title"] = "Invoice Facturation";
+    InvoiceModel Invoice = (InvoiceModel)ViewData["Invoice"];
+}
+
+<body>
+
+    
+
+    <h3></h3>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    No. Factura
+                </th>
+                <th>
+                    Cliente
+                </th>
+                <th>
+                    Sub Total
+                </th>
+                <th>
+                    Total Itbis
+                </th>
+                <th>
+                    Total
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>@Invoice.Id</td>
+                <td>@Invoice.CustomerName</td>
+                <td>@Math.Round(Invoice.TotalItbis.Value,2)</td>
+                <td>@Math.Round(Invoice.SubTotal.Value,2)</td>
+                <td>@Math.Round(@Invoice.Total.Value, 2)</td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+    <div class="myDiv"> <h4>Detalle</h4></div>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Cantidad
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                  Itbis
+                </th>
+                <th>
+                   Sub Total
+                </th>
+                <th>
+                    Total
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var e in Invoice.InvoiceDetailModels)
+            {
+                <tr>
+                                        <td>@e.Qty</td>
+                    <td>@Math.Round(e.Price,2)</td>
+                    <td>@Math.Round(e.TotalItbis.Value,2)</td>
+                    <td>@Math.Round(e.SubTotal.Value,2)</td>
+                    <td>@Math.Round(@e.Total.Value, 2)</td>                 
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+
+</body>
+
+<style>
+    .myDiv {
+        border: 2px outset black;
+        background-color: darkblue;
+        color: white;
+        text-align: center;
+    }
+</style>

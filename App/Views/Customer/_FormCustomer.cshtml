@@ -1,0 +1,64 @@
+﻿@using Shared;
+@{
+    List<TypeCustomerModel> customertype = (List<TypeCustomerModel>)ViewData["typeCustomer"];
+}
+@model CustomerModel
+
+<body>
+
+     <div class="container">
+         <br />
+        <form asp-action="PostPutCostumer" asp-asp-controller="Customer" method="post">
+       
+            <div class="form-group col-md-6">
+                
+                <label>Nombre</label> 
+                <input hidden type="number" asp-for="Id" class="form-control" />
+                <input type="text" asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" style="color:red;"></span>
+
+            </div>
+            <div class="form-group col-md-6">
+
+                <label>Dirección</label>
+                <input hidden type="number" asp-for="Id" class="form-control" />
+                <input type="text" asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" style="color:red;"></span>
+
+            </div>
+            <br />
+            <div class="form-group col-md-6">
+
+                <label>Estado</label>
+                <input type="checkbox" name="Status" asp-for="Status" />  
+                <span asp-validation-for="Status" style="color:red;"></span>
+
+            </div>
+            <br />
+            <div class="form-group col-md-6">
+                <label>Tipo Cliente</label> <br />
+                <select name="TypeCustomerId" asp-for="TypeCustomerId">
+                <option value="">Por Favor Elige Una opcion--</option>
+                @foreach(var type in customertype){
+                <option value="@type.Id">@type.Description</option>
+                }              
+            </select> <br />
+                <span asp-validation-for="TypeCustomerId" style="color:red;"></span>
+            </div>
+            <br />
+            
+            <div class="form-group col-md-6"> <button type="submit" onsubmit="">Guardar</button></div>
+
+        </form>
+    </div>
+    
+</body>
+
+<style>
+    .myDiv {
+        border: 2px outset black;
+        background-color: darkblue;
+        color: white;
+        text-align: center;
+    }
+</style>
