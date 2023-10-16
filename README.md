@@ -2,6 +2,10 @@
 
 Esta es una aplicación de facturación desarrollada en .NET Core 7 que utiliza Entity Framework Core 7 para la gestión de datos y Microsoft SQL Server como base de datos.
 
+## Diagrama de datos
+![Facturacion_Shad drawio](https://github.com/Erodriguezdev/Facturation-Application-Shad-Test/assets/61694328/d4a99525-6f53-4bd4-8dce-4761440071f7)
+
+
 ## Requisitos
 
 Para utilizar esta aplicación, asegúrate de tener instalados los siguientes requisitos:
