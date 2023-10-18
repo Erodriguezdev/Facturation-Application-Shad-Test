@@ -95,10 +95,7 @@ namespace Facturation_Application_Schad___Test.Controllers
         public TypeCustomerModel TypeCustomerModel { get; set; }
         public async Task<IActionResult> postCustomerType()
         {
-            if (!ModelState.IsValid)
-            {
-                return Redirect("AddCustomerType");
-            }
+         
             if (TypeCustomerModel.Id == 0)
             {
                 int result = await _typeCustomer.CreateTypeCustomerAsync(TypeCustomerModel);
